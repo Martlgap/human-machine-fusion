@@ -1,0 +1,77 @@
+{% set questions = {'What is the purpose of this research study?': 'Nowadays, AI systems outperform humans in various tasks. On average, current face verification AI systems perform better than humans. We want to investigate whether humans still perform better on tasks where an AI system is less confident in its decision.','What is Face Verification': 'Face Verification describes determining whether two images show the same
+person. It is used in many applications, like access control, identity verification, and face recognition.','What is the hypothesis of this
+work?':'Can humans outperform AI systems on face-verification tasks where AI systems are less confident in their decision?','Who is responsible for this research?' : 'Martin Knoche<br />
+Chair of Human-Machine Communication<br />
+Technical University of Munich<br />
+Theresienstraße 90<br />
+80333 Munich', 'What will happen in this research study?': 'If you choose to participate in this research study, you will be asked to
+complete a series of surveys that will help us better understand how humans perform in selected face verification tasks. Each survey will
+take only a few minutes. The task is to decide whether two presented images show the same identity or not. You also will be asked to rate
+your certainty in your decision. Once you have completed all of the surveys, you will get feedback about how you performed and ranked among
+all study participants.', 'How will we protect your privacy?': 'We are not collecting any information in this study that could be used to
+identify you. The data we collect will come from questions you answer about yourself and your performance on the questions. All of this data
+will be stored on secure databases and will not be shared together with any information that could be used to identify you.', 'Who will see
+your data?': 'All of your information is stored in a database on a secure server of the Leibnitz Rechenzentrum (LRZ) and is visible for
+Martin Knoche. Raw data from your participation may be shared with other researchers.', 'What are the risks of participating in this
+study?': 'While we do not expect any serious risks to you, you may find that some of the questions we ask in this study are personal, so you
+feel uncomfortable answering them. If you experience discomfort, you are free to refrain from answering any question or ending your study
+participation. We also will not collect any personal information as part of this project that could be used to identify someone. It is also
+important to consider the time commitment that this study requires. If you choose to participate, each test will take only a few minutes.',
+'What are the benefits of participating in this study?': 'You will not benefit directly from participating in this research study. However,
+completing all parts of each survey will give you feedback on your performance compared to the AI system we use. You will also be helping us
+better to understand the capabilities and limits of AI systems.', 'What happens if I don’t want to participate in this study?': 'Your
+participation in this study is entirely voluntary. If, after learning more about the study, you have decided you don’t want to participate,
+you may leave this page instead of registering. If you register and start an assessment but then decide that you don’t want to continue, you
+may end the study assessment at any time by leaving the page or closing the browser tab. You can ask Martin Knoche to delete all the
+collected data from you at any time.', 'How can I find out more about this study?': 'Martin Knoche, is in charge of this research study. You
+can contact him at <a href="mailto:martin.knoche@tum.de" class="text-teal-500 hover:text-violet-400">martin.knoche@tum.de</a>. Feel free to get in touch with any questions or concerns you may have.', 'How do I agree to
+participate?': 'By ticking the box next to “I agree to participate...” in the registration form of this page, you are saying that:
+<li class="text-gray-500">You agree to take part in this research.</li>
+<li class="text-gray-500">You feel that you understand what will happen if you take part in this research.</li>
+<li class="text-gray-500">You understand that you are free to stop at any time.</li>
+', } %}
+
+<div class="p-0 sm:p-4 my-auto mx-auto flex items-center justify-center">
+  <div class="flex flex-col mx-1 sm:w-10/12 2xl:w-1/2 items-center justify-center p-0 sm:p-4">
+    <div class="w-full" id="accordion-color" data-accordion="collapse" data-active-classes="bg-gray-100 text-black">
+      {% for question, answer in questions.items() %}
+
+      <h2 id="accordion-color-heading-{{ loop.index }}">
+        <button
+          type="button"
+          class="flex items-center justify-between w-full p-5 font-medium text-left text-teal-500 border {% if not loop.last %} border-b-0 {% endif %} border-gray-200 {% if loop.first %}rounded-t-xl {% endif %} focus:ring-4 focus:ring-blue-200 hover:bg-gradient-to-br from-violet-300 to-violet-500 hover:text-white"
+          data-accordion-target="#accordion-color-body-{{ loop.index }}"
+          aria-expanded="true"
+          aria-controls="accordion-color-body-{{ loop.index }}">
+          <span class="flex items-center"
+            ><svg class="w-5 h-5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                clip-rule="evenodd"></path>
+            </svg>
+            {{ question }}
+          </span>
+          <svg
+            data-accordion-icon
+            class="w-6 h-6 rotate-180 shrink-0"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </h2>
+      <div id="accordion-color-body-{{ loop.index }}" class="hidden" aria-labelledby="accordion-color-heading-{{ loop.index }}">
+        <div class="p-5 font-light border border-{% if loop.last %}t{% else %}b{% endif %}-0 border-gray-200">
+          <p class="mb-2 text-gray-500 text-justify">{{ answer|safe }}</p>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>

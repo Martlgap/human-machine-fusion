@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex flex-col justify-center p-20">
+  <div class="pb-3 sm:pb-14 flex justify-center text-center">
+    <h5 class="uppercase p-2 text-2xl text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-teal-300 to-violet-700">
+      Survey Statistics
+    </h5>
+  </div>
+
+  <div class="pb-3 sm:pb-14 flex justify-center text-center">
+    <h5 class="uppercase p-2 text-2xl font-extrabold">
+      Completion Status <br> Base Survey: {{ completed_base_surveys }} | All Surveys: {{ completed_all_surveys }}
+    </h5>
+  </div>
+
+  <table class="mx-auto shadow-lg bg-white">
+    <thead>
+      <tr>
+        <th class="bg-teal-300 border text-left px-8 py-4 uppercase">#</th>
+        <th class="bg-teal-300 border text-left px-8 py-4 uppercase">User</th>
+        <th class="bg-teal-500 border text-left px-8 py-4 uppercase">Registration</th>
+        {% for key in u_status.keys() %}
+        <th class="bg-teal-500 border text-left px-8 py-4 uppercase">{{ key }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in range(usernames|length) %}
+      <tr>
+        <td class="bg-teal-300 border px-2 py-1">{{ row + 1 }}</td>
+        <td class="bg-teal-300 border px-2 py-1">{{ usernames[row] }}</td>
+        <td class="border px-2 py-1">{{ register[row] }}</td>
+        {% for key in u_status.keys() %}
+        <td class="border px-2 py-1 text-end">
+          <div class="flex">
+            <div class="w-1/3 p-1 border-r">
+              {% if u_status[key][row]|float %} {{ "%.2f" | format(u_status[key][row]*100) }}% {% else %} - {% endif %}
+            </div>
+            <div class="w-1/3 p-1 border-r">
+              {% if u_status[key][row]|float %} {{ "%.2f" | format(acc_user[key][row]*100) }}% {% else %} - {% endif %}
+            </div>
+            <div class="w-1/3 p-1">
+              {% if u_status[key][row]|float %} {{ "%.2f" | format(acc_ai[key][row]*100) }}% {% else %} - {% endif %}
+            </div>
+          </div>
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="flex flex-col justify-center p-20">
+  <div class="pb-3 sm:pb-14 flex justify-center text-center">
+    <h5 class="uppercase p-2 text-2xl text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-teal-300 to-violet-700">
+      Database Management
+    </h5>
+  </div>
+
+  <div class="text-red-500 text-sm text-center">Danger Zone</div>
+  <div class="border rounded-3xl border-red-500 border-dashed p-8 mx-auto">
+    <form id="db_delete" method="POST" action="/delete_user" class="mx-auto">
+      <label class="block text-gray-700 font-bold mb-2" for="username"> Username </label>
+      <div class="flex flex-row gap-3">
+        <select
+          class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+          name="username"
+          id="username">
+          <option value="" selected disabled hidden>Please choose a username</option>
+          {% for user in usernames %}
+          <option value="{{ user }}">{{ user }}</option>
+          {% endfor %}
+        </select>
+
+        <button
+          class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline whitespace-nowrap"
+          onclick="submitForm()">
+          Delete User
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function submitForm() {
+    if (window.confirm("Are you sure you want to do this?")) {
+      document.getElementById("db_delete").submit();
+    }
+  }
+</script>
+{% endblock %}

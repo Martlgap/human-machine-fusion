@@ -1,0 +1,12 @@
+# app.yaml
+runtime: python39
+# entrypoint: gunicorn --limit-request-line 8190 -b :$PORT main:app
+
+env_variables:
+  CLOUD_SQL_USERNAME: "<TBD>"
+  CLOUD_SQL_PASSWORD: "<TBD>"
+  CLOUD_SQL_DATABASE_NAME: "<TBD>"
+  CLOUD_SQL_CONNECTION_NAME: "<TBD>"
+  PROJECT_ID: "<TBD>"
+  CLOUD_SQL_INSTANCE_NAME: "<TBD>"
+  FLASK_SECRET_KEY: "<TBD>"

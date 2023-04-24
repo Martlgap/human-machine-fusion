@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TUM - Face Verification Surveys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/static/tailwind.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="author" content="Martin Knoche" />
+
+    <!-- HTML Meta Tags -->
+    <meta
+      name="description"
+      content="We need participants! Nowadays, AI systems outperform humans in various tasks. On average, current face verification AI systems perform better than humans. We want to investigate whether humans still perform better on tasks where an AI system is less confident in its decision." />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://survey.mmk.e-technik.tu-muenchen.de" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TUM - Online Surveys" />
+    <meta
+      property="og:description"
+      content="We need participants! Nowadays, AI systems outperform humans in various tasks. On average, current face verification AI systems perform better than humans. We want to investigate whether humans still perform better on tasks where an AI system is less confident in its decision." />
+    <meta property="og:image" content="https://survey.mmk.e-technik.tu-muenchen.de/static/imgs/thumbnail.png" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="survey.mmk.e-technik.tu-muenchen.de" />
+    <meta property="twitter:url" content="https://survey.mmk.e-technik.tu-muenchen.de" />
+    <meta name="twitter:title" content="TUM - Online Surveys" />
+    <meta
+      name="twitter:description"
+      content="We need participants! Nowadays, AI systems outperform humans in various tasks. On average, current face verification AI systems perform better than humans. We want to investigate whether humans still perform better on tasks where an AI system is less confident in its decision." />
+    <meta name="twitter:image" content="https://survey.mmk.e-technik.tu-muenchen.de/static/imgs/thumbnail.png" />
+
+    <link rel="icon" type="image/x-icon" href="/static/imgs/favicon.ico" />
+  </head>
+  <body class="flex flex-col min-h-screen font-light">
+    <header>
+      <nav class="w-full px-4 fixed top-0 bg-slate-900">
+        <div class="container mx-auto py-3 flex gap-10 items-center justify-between md:justify-start">
+          <a href="{{url_for('index')}}"><img class="h-8 w-8" src="/static/imgs/logo_mmk.png" alt="Logo" /></a>
+          <span class="-ml-8 mr-20 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-white"> Online Survey </span>
+          <ul class="hidden md:flex space-x-10 text-gray-100 font-bold text-sm uppercase">
+            
+            <li class="hover:text-teal-500">
+              <a href="{{url_for('index') }}">Home</a>
+            </li>
+            
+          </ul>
+          <div id="hamburger" class="space-y-1 md:hidden cursor-pointer z-20">
+            <div class="w-6 h-0.5 bg-white"></div>
+            <div class="w-6 h-0.5 bg-white"></div>
+            <div class="w-6 h-0.5 bg-white"></div>
+          </div>
+          <ul id="menu" class="hidden bg-gray-900 shadow absolute right-0 top-14 w-1/2 p-5 rounded-b-3xl space-y-5 text-white text-center">
+            
+            <li>
+              <a id="hLink" href="{{ url_for('index') }}">Register</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section class="flex-1 mt-8">{% block content %}{% endblock content %}</section>
+    <footer class="mt-auto bg-gray-900 text-white py-4">
+      <div class="mx-auto px-6 flex justify-between items-center text-xs md:text-base">
+        <div>
+          <p>
+            © 2023 -
+            <a href="https://www.ce.cit.tum.de/en/mmk/home/" class="hover:text-violet-400" target="_blank"
+              >Chair of Human-Machine Communication</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+  <!-- Tailwind Elements -->
+  <script src="/static/js/tw-elements.min.js"></script>
+
+  <!-- Tailwind Flowbite -->
+  <script src="/static/js/flowbite.min.js"></script>
+
+  <!-- Smartphone Menu Animation -->
+  <script>
+    const hamburger = document.querySelector("#hamburger");
+    const menu = document.querySelector("#menu");
+    const hLinks = document.querySelectorAll("#hLink");
+
+    hamburger.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+      hamburger.classList.toggle("bg-white");
+    });
+
+    hLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        hamburger.classList.toggle("bg-white");
+      });
+    });
+  </script>
+</html>
