@@ -1,12 +1,12 @@
-gdown
+gdown==4.7.1
 numpy==1.23.5
-pandas
+pandas==1.5.3
 scikit_learn==1.2.1
 scipy==1.10.0
 tensorflow==2.11.0
 torch==1.11.0
-tqdm
+tqdm==4.64.1
 vit_pytorch==0.19.6
-IPython
+IPython==8.10.0
 torchvision==0.12.0
 mxnet-cu112==1.9.1
