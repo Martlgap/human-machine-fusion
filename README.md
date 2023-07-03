@@ -42,7 +42,7 @@ If you find our work useful please consider a citation:
 ```bibtex
 @article{knoche2023tackling,
   title={Tackling Face Verification Edge Cases: In-Depth Analysis and Human-Machine Fusion Approach},
-  author={Knoche, Martin and Rigole, Gerhard},
+  author={Knoche, Martin and Rigoll, Gerhard},
   journal={arXiv preprint arXiv:2304.08134},
   year={2023}
 }
