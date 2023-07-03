@@ -1,5 +1,8 @@
+This is the official repository for the paper: 
 
+[TACKLING FACE VERIFICATION EDGE CASES: IN-DEPTH ANALYSIS AND HUMAN-MACHINE FUSION APPROACH](https://arxiv.org/pdf/2304.08134.pdf)
 
+accepted and published at the [MVA Conference 2023, Japan](https://www.mva-org.jp/mva2023/). 
 
 # Platform
 We used the following platform to run the code:
@@ -31,3 +34,16 @@ python from utils.helper import * ;download_models(); download_datasets(); extra
 
 # Issues
 - [ ] Memory of mxnet cannot be cleared so you might need to run model inference
+
+
+# Citation
+If you find our work useful please consider a citation:
+
+```bibtex
+@article{knoche2023tackling,
+  title={Tackling Face Verification Edge Cases: In-Depth Analysis and Human-Machine Fusion Approach},
+  author={Knoche, Martin and Rigole, Gerhard},
+  journal={arXiv preprint arXiv:2304.08134},
+  year={2023}
+}
+```
